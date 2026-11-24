@@ -34,11 +34,15 @@ Admin Client (Console) -> Campaign API (.NET 10 Minimal API) -> RabbitMQ -> Noti
 7. Tra cứu chi tiết kết quả gửi.
 8. Chạy lại các job thất bại theo cơ chế phù hợp.
 
-## 5. Lộ trình thực hiện
+## 5. Tài liệu dự án
+
+- [01. Phân tích yêu cầu & Đặc tả Use Case](docs/01-phan-tich-yeu-cau.md)
+
+## 6. Lộ trình thực hiện
 
 Xem kế hoạch chi tiết tại [ke-hoach/cong-viec.csv](ke-hoach/cong-viec.csv) và [ke-hoach/milestones.csv](ke-hoach/milestones.csv).
 
-## 6. Hướng dẫn cài đặt & chạy hệ thống
+## 7. Hướng dẫn cài đặt & chạy hệ thống
 
 *(Sẽ được cập nhật chi tiết khi hoàn thiện cấu trúc solution và `docker-compose.yml`)*
 
