@@ -38,6 +38,7 @@ Admin Client (Console) -> Campaign API (.NET 10 Minimal API) -> RabbitMQ -> Noti
 
 - [01. Phân tích yêu cầu & Đặc tả Use Case](docs/01-phan-tich-yeu-cau.md)
 - [02. Thiết kế kiến trúc hệ thống](docs/02-kien-truc.md)
+- [03. Thiết kế CSDL & Hợp đồng bản tin](docs/03-thiet-ke-csdl-va-message.md)
 
 ## 6. Lộ trình thực hiện
 
