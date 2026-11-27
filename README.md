@@ -46,7 +46,31 @@ Xem kế hoạch chi tiết tại [ke-hoach/cong-viec.csv](ke-hoach/cong-viec.cs
 
 ## 7. Hướng dẫn cài đặt & chạy hệ thống
 
-*(Sẽ được cập nhật chi tiết khi hoàn thiện cấu trúc solution và `docker-compose.yml`)*
+### Cấu trúc solution (.NET 10)
+
+```text
+MassNotificationSystem.sln
+├── Directory.Build.props
+├── src/
+│   ├── Shared.Contracts/        # Enum, hằng số RabbitMQ/HTTP và NotificationJobMessage
+│   ├── Campaign.Api/            # ASP.NET Core Minimal API
+│   ├── Notification.Worker/     # Worker Service xử lý gửi thông báo nền
+│   └── Admin.Client/            # Console App quản trị chiến dịch
+└── tests/
+    └── MassNotification.UnitTests/  # Unit test xUnit
+```
+
+### Build & kiểm thử cục bộ
+
+Yêu cầu cài đặt **.NET 10 SDK**.
+
+```powershell
+dotnet restore MassNotificationSystem.sln
+dotnet build MassNotificationSystem.sln --configuration Release --no-restore
+dotnet test MassNotificationSystem.sln --configuration Release --no-build
+```
+
+*(Hướng dẫn khởi chạy đầy đủ bằng `docker-compose.yml` sẽ được bổ sung ở bước tiếp theo)*
 
 ---
 
