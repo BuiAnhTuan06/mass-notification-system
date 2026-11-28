@@ -46,11 +46,14 @@ Xem kế hoạch chi tiết tại [ke-hoach/cong-viec.csv](ke-hoach/cong-viec.cs
 
 ## 7. Hướng dẫn cài đặt & chạy hệ thống
 
-### Cấu trúc solution (.NET 10)
+### Cấu trúc dự án & solution (.NET 10)
 
 ```text
 MassNotificationSystem.sln
 ├── Directory.Build.props
+├── docker-compose.yml           # Điều phối PostgreSQL, RabbitMQ và mạng notification-net
+├── .env.example                 # Mẫu biến môi trường cho hạ tầng & service
+├── .dockerignore
 ├── src/
 │   ├── Shared.Contracts/        # Enum, hằng số RabbitMQ/HTTP và NotificationJobMessage
 │   ├── Campaign.Api/            # ASP.NET Core Minimal API
@@ -59,6 +62,24 @@ MassNotificationSystem.sln
 └── tests/
     └── MassNotification.UnitTests/  # Unit test xUnit
 ```
+
+### Khởi chạy hạ tầng bằng Docker Compose
+
+Yêu cầu cài đặt **Docker Desktop** (hoặc Docker Engine + Docker Compose).
+
+1. Tạo file biến môi trường cục bộ từ mẫu:
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+2. Khởi chạy PostgreSQL và RabbitMQ trên mạng nội bộ `notification-net`:
+   ```powershell
+   docker compose up -d
+   docker compose ps
+   ```
+3. Các cổng mặc định trên máy host:
+   - **PostgreSQL:** `localhost:5432`
+   - **RabbitMQ AMQP:** `localhost:5672`
+   - **RabbitMQ Management UI:** `http://localhost:15672`
 
 ### Build & kiểm thử cục bộ
 
@@ -69,8 +90,6 @@ dotnet restore MassNotificationSystem.sln
 dotnet build MassNotificationSystem.sln --configuration Release --no-restore
 dotnet test MassNotificationSystem.sln --configuration Release --no-build
 ```
-
-*(Hướng dẫn khởi chạy đầy đủ bằng `docker-compose.yml` sẽ được bổ sung ở bước tiếp theo)*
 
 ---
 
